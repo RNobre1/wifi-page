@@ -1,0 +1,5 @@
+{
+  "name": "Wi-Fi Access Portal",
+  "description": "A simple and elegant landing page for guests to connect to a sponsored Wi-Fi network by copying the password with a single click.",
+  "requestFramePermissions": []
+}
