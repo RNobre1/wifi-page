@@ -1,0 +1,7 @@
+# GitGuardian configuration for this local security lab.
+# See https://docs.gitguardian.com/ggshield-docs/reference/config
+version: 2
+secret:
+  ignored-paths:
+    - .env.example
+    - docs/**

@@ -20,10 +20,11 @@ Painel PHP simulando um SaaS de monitoramento com planos **Free / Pro / Admin**.
 
 ```bash
 cp .env.example .env
+# edite .env e defina LAB_SEED_PASSWORD com uma senha qualquer (lab-only)
 docker compose up -d --build
 ```
 
-Abra `http://localhost:8080/` no navegador. Três contas seed são criadas no primeiro request (senha `senha123` em todas):
+Abra `http://localhost:8080/` no navegador. Três contas seed são criadas no primeiro request, todas com a senha configurada em `LAB_SEED_PASSWORD`:
 
 | email                 | tier  |
 |-----------------------|-------|
@@ -36,6 +37,7 @@ Abra `http://localhost:8080/` no navegador. Três contas seed são criadas no pr
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r tests/requirements.txt
+export LAB_SEED_PASSWORD="$(grep ^LAB_SEED_PASSWORD .env | cut -d= -f2-)"
 pytest
 ```
 

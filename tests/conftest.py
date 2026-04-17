@@ -9,7 +9,11 @@ import requests
 
 
 BASE_URL = os.environ.get("LAB_BASE_URL", "http://localhost:8080")
-SEED_PASSWORD = "senha123"
+SEED_PASSWORD = os.environ.get("LAB_SEED_PASSWORD")
+if not SEED_PASSWORD:
+    raise RuntimeError(
+        "LAB_SEED_PASSWORD nao definida — exporte a mesma senha usada pelo container web"
+    )
 
 
 @pytest.fixture(scope="session")

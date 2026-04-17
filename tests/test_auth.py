@@ -1,12 +1,14 @@
 """Smoke tests for the login flow and session cookie hardening."""
 import requests
 
+from conftest import SEED_PASSWORD
+
 
 def test_login_ok(base_url: str) -> None:
     s = requests.Session()
     r = s.post(
         f"{base_url}/login.php",
-        data={"email": "free@teste.local", "password": "senha123"},
+        data={"email": "free@teste.local", "password": SEED_PASSWORD},
         headers={"Accept": "application/json"},
         timeout=5,
     )
@@ -31,7 +33,7 @@ def test_session_cookie_is_httponly(base_url: str) -> None:
     s = requests.Session()
     s.post(
         f"{base_url}/login.php",
-        data={"email": "free@teste.local", "password": "senha123"},
+        data={"email": "free@teste.local", "password": SEED_PASSWORD},
         headers={"Accept": "application/json"},
         timeout=5,
     )

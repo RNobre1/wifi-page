@@ -21,7 +21,7 @@ $uid = current_user_id();
   <p><a href="login.php">Entrar</a></p>
 <?php endif; ?>
 <hr>
-<p>Contas seed (senha <code>senha123</code>):</p>
+<p>Contas seed (senha definida em <code>LAB_SEED_PASSWORD</code> no <code>.env</code>):</p>
 <ul>
   <li><code>free@teste.local</code></li>
   <li><code>pro@teste.local</code></li>

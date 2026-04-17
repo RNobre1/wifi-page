@@ -14,8 +14,12 @@ function seed_users_once(): void {
         ['pro@teste.local',   'pro'],
         ['admin@teste.local', 'admin'],
     ];
+    $password = getenv('LAB_SEED_PASSWORD');
+    if (!is_string($password) || $password === '') {
+        throw new RuntimeException('LAB_SEED_PASSWORD nao configurada — defina em .env');
+    }
     $stmt = $pdo->prepare('INSERT INTO users (email, pass_hash, tier) VALUES (?, ?, ?)');
     foreach ($users as [$email, $tier]) {
-        $stmt->execute([$email, password_hash('senha123', PASSWORD_BCRYPT), $tier]);
+        $stmt->execute([$email, password_hash($password, PASSWORD_BCRYPT), $tier]);
     }
 }

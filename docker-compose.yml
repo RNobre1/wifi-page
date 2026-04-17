@@ -10,6 +10,7 @@ services:
       DB_PASS: ${DB_PASS:-monitorpass}
       REDIS_HOST: ${REDIS_HOST:-redis}
       REDIS_PORT: ${REDIS_PORT:-6379}
+      LAB_SEED_PASSWORD: ${LAB_SEED_PASSWORD:-trocar-em-env}
     depends_on:
       db:
         condition: service_healthy
